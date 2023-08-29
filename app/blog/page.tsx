@@ -1,3 +1,5 @@
+import { PostSearch } from "@/components/PostSearch";
+import { Posts } from "@/components/Posts";
 import { Metadata } from "next";
 import Link from "next/link";
 
@@ -32,15 +34,13 @@ const Blog = async () => {
   return (
     <>
       <h1>Blog page</h1>
-      <ul>
-        {posts?.map((item: any) => (
-          <li key={item.id}>
-            <Link href={`/blog/${item.id}`}>{item.title}</Link>
-          </li>
-        ))}
-      </ul>
+      {/* используем в серверном компоненте два клиентских */}
+      <PostSearch />
+      <Posts />
     </>
   );
 };
 
 export default Blog;
+
+// это один из вариантов использования клиентских компонентов в серверном (через swr). мы также можем использовать редакс, но тогда нужно создать провайдер, который будет оборачивать чилдрены в главном лайауте.
