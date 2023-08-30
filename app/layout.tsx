@@ -3,13 +3,13 @@ import { Header } from "@/components/Header";
 import "./globals.css";
 import type { Metadata } from "next";
 // подключаем шрифты
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import { ReactNode } from "react";
 import { Footer } from "@/components/Footer";
 import { Providers } from "@/components/Providers";
 
 // настраиваем шрифты
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 // подключение метаданных на странице
 export const metadata: Metadata = {
@@ -27,8 +27,10 @@ const RootLayout = (props: RootLayoutProps) => {
 
   return (
     <html lang="en">
-      {/* подключаем шрифты на страницу */}
-      <body className={inter.className}>
+      <body
+      // подключаем шрифты на страницу
+      // className={inter.className}
+      >
         <Providers>
           {/* добавляем хедер и футер, чтоб они появлялись на каждой странице */}
           <Header />

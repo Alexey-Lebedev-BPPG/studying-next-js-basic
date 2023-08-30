@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { authConfig } from "@/configs/auth";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
