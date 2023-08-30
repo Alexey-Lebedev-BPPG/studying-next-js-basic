@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
 import { Footer } from "@/components/Footer";
+import { Providers } from "@/components/Providers";
 
 // настраиваем шрифты
 const inter = Inter({ subsets: ["latin"] });
@@ -28,10 +29,12 @@ const RootLayout = (props: RootLayoutProps) => {
     <html lang="en">
       {/* подключаем шрифты на страницу */}
       <body className={inter.className}>
-        {/* добавляем хедер и футер, чтоб они появлялись на каждой странице */}
-        <Header />
-        <main className="container">{children}</main>
-        <Footer />
+        <Providers>
+          {/* добавляем хедер и футер, чтоб они появлялись на каждой странице */}
+          <Header />
+          <main className="container">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

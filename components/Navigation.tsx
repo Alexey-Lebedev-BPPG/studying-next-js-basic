@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 interface NavLink {
   label: string;
@@ -17,6 +18,9 @@ export const Navigation = (props: INavigationProps) => {
 
   // аналог useNavigation
   const pathname = usePathname();
+
+  // получим данные сессии (объект с данными пользователя и сессии)
+  const session = useSession();
 
   return (
     <>
@@ -37,6 +41,16 @@ export const Navigation = (props: INavigationProps) => {
           </Link>
         );
       })}
+      {/* делаем переход в профиль, если пользователь авторизован */}
+      {session?.data && <Link href="/profile">Profile</Link>}
+      {session?.data ? (
+        // после выхода делаем редирект
+        <Link href="#" onClick={() => signOut({ callbackUrl: "/" })}>
+          Sign Out
+        </Link>
+      ) : (
+        <Link href="/signin">Sign In</Link>
+      )}
     </>
   );
 };

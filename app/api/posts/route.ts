@@ -1,5 +1,5 @@
+import { posts } from '@/mockData/mockPosts';
 import { NextResponse } from "next/server";
-import { posts } from "./mockPosts";
 
 // создаем асинхронную функцию, которая будет обрабатывать наш запрос с определенным методом
 export const GET = async (req: Request) => {
